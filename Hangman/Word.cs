@@ -7,67 +7,70 @@ namespace Hangman
 {
     class Word
     {
-        private string w;
-        private System.Text.StringBuilder PrintedWord = new System.Text.StringBuilder();
+        private string wordToGuess;
+	    private StringBuilder printedWord;
 
-        public void SetPlayedWord(string theWord)
+		public Word(string theWordToGuess, StringBuilder theWord)
         {
-            this.w = theWord;
+			this.WordToGuess = theWordToGuess;
+			this.PrintedWord = theWord;
         }
 
-        public string GetPlayedWord()
+		public string WordToGuess
         {
-            return this.w;
+			get { return this.wordToGuess; }
+			private set { this.wordToGuess = value; }
         }
 
-        public void SetPrintedWord(System.Text.StringBuilder theWord)
+		public StringBuilder PrintedWord
         {
-            this.PrintedWord = theWord;
+			get { return this.printedWord;}
+			set { this.printedWord = value; }
         }
 
-        public string GetPrintedWord()
-        {
-            return this.PrintedWord.ToString();
+	    public bool Isletter(char theletter)
+	    {
+			if (char.ToLower(theletter) >= 'a' && char.ToLower(theletter) <= 'z')
+		    {
+			    return true;
+		    }
+
+		    return false;
         }
 
-        public bool Isletter(char Theletter)
+		public bool IsWordToGuessContainsLetter(char theLetter)
         {
-            if (char.ToLower(Theletter) >= 'a' && char.ToLower(Theletter) <= 'z')
-                return true;
-            else
-                return false;
+			if (this.wordToGuess.Contains(char.ToLower(theLetter)))
+			{
+				return true;
+			}
+
+			return false;
         }
 
-        public bool CheckForLetter(char TheLetter)
+		public string WriteTheLetter(char theLetter)
         {
-            if (w.Contains(char.ToLower(TheLetter)))
+
+			for (int i = 0; i < this.wordToGuess.Length - 1; i++)
             {
-                return true;
-            }
-            else return false;
-        }
-
-        public string WriteTheLetter(char TheLetter)
-        {
-
-            for (int WordLenght = 0; WordLenght < w.Length - 1; WordLenght++)
-            {
-                if (this.w.IndexOf(char.ToLower(TheLetter), WordLenght) >= 0)
+				if (this.wordToGuess.IndexOf(char.ToLower(theLetter), i) >= 0)
                 {
-                    this.PrintedWord[this.w.IndexOf(char.ToLower(TheLetter), WordLenght) * 2] = TheLetter;
+					this.printedWord[this.wordToGuess.IndexOf(char.ToLower(theLetter), i) * 2] = theLetter;
                 }
             }
 
-            return PrintedWord.ToString();
+			return printedWord.ToString();
         }
 
-        public int NumberOfInput(char TheLetter)
+        public int NumberOfInput(char theLetter)
         {
             int Number = 0;
-            for (int WordLenght = 0; WordLenght < w.Length; WordLenght++)
+			for (int i = 0; i < this.wordToGuess.Length; i++)
             {
-                if (this.w[WordLenght].Equals(char.ToLower(TheLetter))) 
-                Number++;
+				if (this.wordToGuess[i].Equals(char.ToLower(theLetter))) 
+				{
+					Number++;
+				}
             }
             return Number;
         }
