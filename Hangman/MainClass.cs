@@ -10,7 +10,7 @@ namespace Hangman
     class MainClass
     { 
 		const int ONE_LETTER = 1;
-        const double sNOT_REAL_PLAYER = 1000000000.5;
+        const double NOT_REAL_PLAYER = 1000000000.5;
 
         static readonly string[] words = 
         { 
