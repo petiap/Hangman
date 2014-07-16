@@ -1,79 +1,86 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Hangman
+﻿namespace Hangman
 {
+    using System;
+    using System.Linq;
+    using System.Text;
+
     class Word
     {
-        private string wordToGuess;
-	    private StringBuilder printedWord;
+        private string playedWord;
+        private StringBuilder printedWord;
 
-		public Word(string theWordToGuess, StringBuilder theWord)
+        public Word(string playedWord, StringBuilder printedWord)
         {
-			this.WordToGuess = theWordToGuess;
-			this.PrintedWord = theWord;
+            this.playedWord = playedWord;
+            this.printedWord = printedWord;
         }
 
-		public string WordToGuess
+        public string PlayedWord
         {
-			get { return this.wordToGuess; }
-			private set { this.wordToGuess = value; }
-        }
-
-		public StringBuilder PrintedWord
-        {
-			get { return this.printedWord;}
-			set { this.printedWord = value; }
-        }
-
-	    public bool Isletter(char theletter)
-	    {
-			if (char.ToLower(theletter) >= 'a' && char.ToLower(theletter) <= 'z')
-		    {
-			    return true;
-		    }
-
-		    return false;
-        }
-
-		public bool IsWordToGuessContainsLetter(char theLetter)
-        {
-			if (this.wordToGuess.Contains(char.ToLower(theLetter)))
-			{
-				return true;
-			}
-
-			return false;
-        }
-
-		public string WriteTheLetter(char theLetter)
-        {
-
-			for (int i = 0; i < this.wordToGuess.Length - 1; i++)
+            get
             {
-				if (this.wordToGuess.IndexOf(char.ToLower(theLetter), i) >= 0)
+                return this.playedWord;
+            }
+
+            set
+            {
+                this.playedWord = value;
+            }
+        }
+
+        public string PrintedWord
+        {
+            get
+            {
+                return this.printedWord.ToString();
+            }
+        }
+
+        public bool Isletter(char Theletter)
+        {
+            if (char.ToLower(Theletter) >= 'a' && char.ToLower(Theletter) <= 'z')
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool CheckForLetter(char TheLetter)
+        {
+            if (playedWord.Contains(char.ToLower(TheLetter)))
+            {
+                return true;
+            }
+            
+            return false;
+        }
+
+        public string WriteTheLetter(char TheLetter)
+        {
+
+            for (int WordLenght = 0; WordLenght < playedWord.Length - 1; WordLenght++)
+            {
+                if (this.playedWord.IndexOf(char.ToLower(TheLetter), WordLenght) >= 0)
                 {
-					this.printedWord[this.wordToGuess.IndexOf(char.ToLower(theLetter), i) * 2] = theLetter;
+                    this.printedWord[this.playedWord.IndexOf(char.ToLower(TheLetter), WordLenght) * 2] = TheLetter;
                 }
             }
 
-			return printedWord.ToString();
+            return printedWord.ToString();
         }
 
-        public int NumberOfInput(char theLetter)
+        public int NumberOfInput(char TheLetter)
         {
             int Number = 0;
-			for (int i = 0; i < this.wordToGuess.Length; i++)
+
+            for (int WordLenght = 0; WordLenght < playedWord.Length; WordLenght++)
             {
-				if (this.wordToGuess[i].Equals(char.ToLower(theLetter))) 
-				{
-					Number++;
-				}
+                if (this.playedWord[WordLenght].Equals(char.ToLower(TheLetter)))
+                    Number++;
             }
+
             return Number;
         }
     }
 }
-
