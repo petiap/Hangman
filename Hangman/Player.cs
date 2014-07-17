@@ -2,30 +2,16 @@
 {
     using System;
 
-    public class TopPlayer
+    public class Player
     {
         private string playerName;
-        private double playerScore;
-        
-        //private static TopPlayer topPlayerInstance;
+        private int playerScore;
 
-        //private TopPlayer()
-        //{
-
-        //}
-
-        //public static TopPlayer TopPlayerInstance
-        //{
-        //    get
-        //    {
-        //        if (topPlayerInstance == null)
-        //        {
-        //            topPlayerInstance = new TopPlayer();
-        //        }
-
-        //        return topPlayerInstance;
-        //    }
-        //}
+        public Player(string gamePlayerName, int gamePlayerScore)
+        {
+            this.PlayerName = gamePlayerName;
+            this.PlayerScore = gamePlayerScore;
+        }
 
         public string PlayerName
         {
@@ -38,14 +24,14 @@
             {
                 if (String.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException("PlayerName", "Value can't be null or empty string");
+                    throw new ArgumentNullException("PlayerName", "Value can't be null or an empty string");
                 }
 
                 this.playerName = value;
             }
         }
 
-        public double PlayerScore
+        public int PlayerScore
         {
             get
             {
