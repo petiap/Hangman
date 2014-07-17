@@ -24,7 +24,7 @@
                                          };
 
        
-        static TopPlayer DefaultTopPlayer = new TopPlayer { PlayerName = "", PlayerScore = MAX_SCORE };
+        static TopPlayer DefaultTopPlayer = new TopPlayer { PlayerName = "NoName", PlayerScore = MAX_SCORE };
         static TopPlayer[] TopPlayers = new TopPlayer[6];
 
 

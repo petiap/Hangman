@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangman", "Hangman\Hangman.csproj", "{DD60E7DE-C319-4B86-948B-EA0F0A8CA786}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangman", "Hangman\Hangman.csproj", "{7F64863B-BCC1-4864-A202-CDB9ABABCCF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DD60E7DE-C319-4B86-948B-EA0F0A8CA786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD60E7DE-C319-4B86-948B-EA0F0A8CA786}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DD60E7DE-C319-4B86-948B-EA0F0A8CA786}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DD60E7DE-C319-4B86-948B-EA0F0A8CA786}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F64863B-BCC1-4864-A202-CDB9ABABCCF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F64863B-BCC1-4864-A202-CDB9ABABCCF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F64863B-BCC1-4864-A202-CDB9ABABCCF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F64863B-BCC1-4864-A202-CDB9ABABCCF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
