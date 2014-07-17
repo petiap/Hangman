@@ -8,7 +8,6 @@
     public class Hangman
     { 
 		const int ONE_LETTER = 1;
-        const double MAX_SCORE = 1000000000.5;
 
         static readonly string[] words = { 
                                              "computer",
@@ -23,24 +22,12 @@
                                              "variable"
                                          };
 
-       
-        static TopPlayer DefaultTopPlayer = new TopPlayer { PlayerName = "NoName", PlayerScore = MAX_SCORE };
-        static TopPlayer[] TopPlayers = new TopPlayer[6];
-
-
         static char InputLetter;
         static bool NotUseHelp = true;
-        static int GameCounter = 0;
 
         static void Main()
         {
-            for (int playersNumber = 0; playersNumber < 6; playersNumber++)
-            {
-                TopPlayers[playersNumber] = DefaultTopPlayer;
-            }
-
-            Random randomWord = new Random();
-            
+            Random randomWordGenerator = new Random();
 
             while (true)
             {   //main loop, used to restart game automatically
@@ -49,39 +36,39 @@
                         + "'restart' to start a new game, \n'help' to cheat and 'exit' to quit the game.\n");
 
                 int PlayerMistakes = 0;
-				string PlayedWord = words[randomWord.Next(0, 10)];
-                StringBuilder printedWord = new StringBuilder();
-                StringBuilder inputString = new StringBuilder();
-				printedWord.Clear();
 
-                for (int WordLenght = 0; WordLenght < PlayedWord.Length; WordLenght++)
-                {   //makes _ _ _ _ _...
-					printedWord.Append("_ ");
+                string secretWord = words[randomWordGenerator.Next(0, (words.Length - 1))];
+
+                StringBuilder printedWord = new StringBuilder();
+                StringBuilder command = new StringBuilder();
+                printedWord.Clear();
+
+                for (int wordLenght = 0; wordLenght < secretWord.Length; wordLenght++)
+                {   //makes _ _ _ _ _
+                    printedWord.Append("_ ");
                 }
 
-				Word WordsInGame = new Word(PlayedWord, printedWord);
+                Word WordsInGame = new Word(secretWord, printedWord);
                 //WordsInGame.SetPlayedWord();
-               // WordsInGame.SetPrintedWord();
+                // WordsInGame.SetPrintedWord();
 
-				while (WordsInGame.PrintedWord.ToString().Contains('_'))
+                while (WordsInGame.PrintedWord.ToString().Contains('_'))
                 {
                     //start new game
 
-					Console.WriteLine("The secret word is " + WordsInGame.PrintedWord);
+                    Console.WriteLine("The secret word is " + WordsInGame.PrintedWord);
 
                     Console.Write("Enter your guess: ");
-					inputString.Clear();
-					inputString.Append(Console.ReadLine());
+                    command.Clear();
+                    command.Append(Console.ReadLine());
 
-					if (inputString.Length == ONE_LETTER)
+                    if (command.Length == ONE_LETTER)
                     {
-						InputLetter = (inputString[0]);
+                        InputLetter = (command[0]);
                     }
 
-					if (inputString.Length == ONE_LETTER && WordsInGame.Isletter(char.ToLower(InputLetter)))
+                    if (command.Length == ONE_LETTER && WordsInGame.Isletter(char.ToLower(InputLetter)))
                     {
-
-
                         if (WordsInGame.CheckForLetter(char.ToLower(InputLetter)))
                         {
                             WordsInGame.WriteTheLetter(char.ToLower(InputLetter));
@@ -89,7 +76,7 @@
                         }
                         else
                         {
-                            Console.WriteLine("Sorry! There are no unrevealed letters " + "\"" + char.ToLower(InputLetter)+ "\"");
+                            Console.WriteLine("Sorry! There are no unrevealed letters " + "\"" + char.ToLower(InputLetter) + "\"");
                             PlayerMistakes++;
                         }
 
@@ -98,20 +85,37 @@
                     {
                         bool Restart = false;
 
-						switch (inputString.ToString())
+                        switch (command.ToString())
                         {
-                            case "help": GiveHint(WordsInGame); break;                                
+                            case "help":
+                                {
+                                    GiveHint(WordsInGame);
 
-                            case "exit": Environment.Exit(0); break;
+                                    break;
+                                }
+                            case "exit":
+                                {
+                                    Environment.Exit(0);
 
-                            case "restart": Restart = true; break;
+                                    break;
+                                }
+                            case "restart":
+                                {
+                                    Restart = true;
 
-                            case "top": ShowScoreboard(); break;
+                                    break;
+                                }
+                            case "top":
+                                {
+                                    ShowScoreboard();
 
+                                    break;
+                                }
                             default:
                                 {
                                     Console.WriteLine("Incorect input");
                                     PlayerMistakes++;
+
                                     break;
                                 }
                         }
@@ -122,31 +126,24 @@
                             break;
                         }
                     }
-
-                    
-
                 }
 
-				if (!WordsInGame.PrintedWord.ToString().Contains('_'))
+                if (!WordsInGame.PrintedWord.ToString().Contains('_'))
                 {
-					Console.WriteLine("The secret word is " + WordsInGame.PrintedWord);
+                    Console.WriteLine("The secret word is " + WordsInGame.PrintedWord);
                     Console.Write("\nYou won with " + PlayerMistakes + " mistakes");
 
-                    bool BetterThanLast = TopPlayers[4].PlayerScore > PlayerMistakes;
+                    bool BetterThanLast = Scoreboard.ScoreboardInstance.IsNewTopScore(PlayerMistakes);
+
                     if (NotUseHelp && BetterThanLast)
                     {
-                        
                         Console.Write("\nPlease enter your name for the top scoreboard: ");
-                                                                       
-                        TopPlayers[GameCounter] = new TopPlayer { PlayerName = Console.ReadLine(), PlayerScore = PlayerMistakes };
 
-                        if (GameCounter < 5)
-                        {
-                            GameCounter++;
-                        }
+                        string newTopPlayerName = Console.ReadLine();
+                        Player newTopPlayer = new Player(newTopPlayerName, PlayerMistakes);
+                        Scoreboard.ScoreboardInstance.AddPlayer(newTopPlayer);
 
-                        Array.Sort(TopPlayers, (TopPlayer1, topPlayer2) => TopPlayer1.PlayerScore.CompareTo(topPlayer2.PlayerScore));
-                        ShowScoreboard();
+                        ShowScoreboard();                        
                     }
                     else if (!BetterThanLast)
                     {
@@ -165,20 +162,9 @@
        
         private static void ShowScoreboard()
         {
-            Console.WriteLine("Scoreboard: ");
+            Console.WriteLine("Scoreboard:");
 
-            for (int playersNumber = 0; playersNumber < 5; playersNumber++)
-            {
-                if (TopPlayers[playersNumber].PlayerScore != MAX_SCORE)
-                {
-                    Console.WriteLine(TopPlayers[playersNumber].PlayerScore.ToString() + " " + TopPlayers[playersNumber].PlayerName);
-                }
-            }
-
-            if (GameCounter == 0)
-            {
-                Console.WriteLine("Scoreboard is empty");
-            }
+            Console.WriteLine(Scoreboard.ScoreboardInstance.ToString());                
         }
 
         private static void GiveHint(Word Game)
