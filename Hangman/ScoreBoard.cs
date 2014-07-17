@@ -47,7 +47,7 @@
                 SortByHighestScore();
 
                 int lastPosition = (NUMBER_OF_TOP_PLAYERS - 1);
-                double lowestTopScore = this.topPlayers[lastPosition].PlayerScore;
+                double lowestTopScore = this.topPlayers[lastPosition].Score;
 
                 if (lowestTopScore < topScoreCandidate)
                 {
@@ -60,7 +60,7 @@
 
         private void SortByHighestScore()
         {
-            this.topPlayers = this.topPlayers.OrderBy(player => player.PlayerScore).ToList();
+            this.topPlayers = this.topPlayers.OrderBy(player => player.Score).ToList();
         }
 
         public override string ToString()
@@ -84,9 +84,9 @@
                 for (int i = 0; i < count; i++)
                 {
                     int position = i + 1;
-                    string comment = this.topPlayers[i].PlayerScore == 1 ? "mistake" : "mistakes";
+                    string comment = this.topPlayers[i].Score == 1 ? "mistake" : "mistakes";
 
-                    scoreboard.AppendLine(position + ". " + this.topPlayers[i].PlayerName + " --> " + this.topPlayers[i].PlayerScore + " " + comment);
+                    scoreboard.AppendLine(position + ". " + this.topPlayers[i].Name + " --> " + this.topPlayers[i].Score + " " + comment);
                 }
             }
 
