@@ -4,48 +4,48 @@
 
     public class Player
     {
-        private string playerName;
-        private int playerScore;
+        private string name;
+        private int score;
 
-        public Player(string gamePlayerName, int gamePlayerScore)
+        public Player(string playerName, int playerScore)
         {
-            this.PlayerName = gamePlayerName;
-            this.PlayerScore = gamePlayerScore;
+            this.Name = playerName;
+            this.Score = playerScore;
         }
 
-        public string PlayerName
+        public string Name
         {
             get
             {
-                return this.playerName;
+                return this.name;
             }
 
             set
             {
                 if (String.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException("PlayerName", "Value can't be null or an empty string");
+                    throw new ArgumentNullException("Name", "Value can't be null or an empty string");
                 }
 
-                this.playerName = value;
+                this.name = value;
             }
         }
 
-        public int PlayerScore
+        public int Score
         {
             get
             {
-                return this.playerScore;
+                return this.score;
             }
 
             set
             {
-                if (playerScore < 0)
+                if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("PlayerScore", "Value can't be negative");
+                    throw new ArgumentOutOfRangeException("Score", "Value can't be negative");
                 }
 
-                this.playerScore = value;
+                this.score = value;
             }
         }
     }
