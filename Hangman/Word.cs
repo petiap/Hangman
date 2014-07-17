@@ -4,7 +4,7 @@
     using System.Linq;
     using System.Text;
 
-    class Word
+    public class Word
     {
         private string playedWord;
         private StringBuilder printedWord;
