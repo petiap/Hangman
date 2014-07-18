@@ -7,7 +7,7 @@
 
     public class Hangman
     { 
-		const int ONE_LETTER = 1;
+		const int LETTER = 1;
 
         static readonly string[] words = { 
                                              "computer",
@@ -30,44 +30,46 @@
             Random randomWordGenerator = new Random();
 
             while (true)
-            {   //main loop, used to restart game automatically
+            {
+                StringBuilder initialGameMessage = new StringBuilder();
+                initialGameMessage.AppendLine("Welcome to “Hangman” game.Please try to guess my secret word.");
+                initialGameMessage.AppendLine("Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' to cheat and 'exit' to quit the game.");
 
-                Console.Write("\nWelcome to “Hangman” game.Please try to guess my secret word.\nUse 'top' to view the top scoreboard,"
-                        + "'restart' to start a new game, \n'help' to cheat and 'exit' to quit the game.\n");
-
-                int PlayerMistakes = 0;
+                Console.Write(initialGameMessage);
 
                 string secretWord = words[randomWordGenerator.Next(0, (words.Length - 1))];
-
-                StringBuilder printedWord = new StringBuilder();
-                StringBuilder command = new StringBuilder();
-                printedWord.Clear();
+                StringBuilder maskedWord = new StringBuilder();
 
                 for (int wordLenght = 0; wordLenght < secretWord.Length; wordLenght++)
                 {   //makes _ _ _ _ _
-                    printedWord.Append("_ ");
+                    maskedWord.Append("_ ");
                 }
+                
+                int playerMistakes = 0;               
+                                
+                StringBuilder command = new StringBuilder();
 
-                Word WordsInGame = new Word(secretWord, printedWord);
-                //WordsInGame.SetPlayedWord();
-                // WordsInGame.SetPrintedWord();
 
-                while (WordsInGame.PrintedWord.ToString().Contains('_'))
+
+                Word WordsInGame = new Word(secretWord, maskedWord);
+
+                while (WordsInGame.MaskedWord.ToString().Contains('_'))
                 {
                     //start new game
 
-                    Console.WriteLine("The secret word is " + WordsInGame.PrintedWord);
+                    Console.WriteLine("The secret word is " + WordsInGame.MaskedWord);
+                    
+                    command.Clear();
 
                     Console.Write("Enter your guess: ");
-                    command.Clear();
                     command.Append(Console.ReadLine());
 
-                    if (command.Length == ONE_LETTER)
+                    if (command.Length == LETTER)
                     {
-                        InputLetter = (command[0]);
+                        InputLetter = command[0];
                     }
 
-                    if (command.Length == ONE_LETTER && WordsInGame.Isletter(char.ToLower(InputLetter)))
+                    if (command.Length == LETTER && WordsInGame.Isletter(char.ToLower(InputLetter)))
                     {
                         if (WordsInGame.CheckForLetter(char.ToLower(InputLetter)))
                         {
@@ -77,7 +79,7 @@
                         else
                         {
                             Console.WriteLine("Sorry! There are no unrevealed letters " + "\"" + char.ToLower(InputLetter) + "\"");
-                            PlayerMistakes++;
+                            playerMistakes++;
                         }
 
                     }
@@ -114,7 +116,7 @@
                             default:
                                 {
                                     Console.WriteLine("Incorect input");
-                                    PlayerMistakes++;
+                                    playerMistakes++;
 
                                     break;
                                 }
@@ -128,19 +130,19 @@
                     }
                 }
 
-                if (!WordsInGame.PrintedWord.ToString().Contains('_'))
+                if (!WordsInGame.MaskedWord.ToString().Contains('_'))
                 {
-                    Console.WriteLine("The secret word is " + WordsInGame.PrintedWord);
-                    Console.Write("\nYou won with " + PlayerMistakes + " mistakes");
+                    Console.WriteLine("The secret word is " + WordsInGame.MaskedWord);
+                    Console.Write("\nYou won with " + playerMistakes + " mistakes");
 
-                    bool BetterThanLast = Scoreboard.ScoreboardInstance.IsNewTopScore(PlayerMistakes);
+                    bool BetterThanLast = Scoreboard.ScoreboardInstance.IsNewTopScore(playerMistakes);
 
                     if (NotUseHelp && BetterThanLast)
                     {
                         Console.Write("\nPlease enter your name for the top scoreboard: ");
 
                         string newTopPlayerName = Console.ReadLine();
-                        Player newTopPlayer = new Player(newTopPlayerName, PlayerMistakes);
+                        Player newTopPlayer = new Player(newTopPlayerName, playerMistakes);
                         Scoreboard.ScoreboardInstance.AddPlayer(newTopPlayer);
 
                         ShowScoreboard();                        
@@ -154,12 +156,17 @@
                         Console.Write(" but you have cheated. \nYou are not allowed to enter into the scoreboard.\n");
                     }
 
-                    PlayerMistakes = 0;
+                    playerMistakes = 0;
                     NotUseHelp = true;
                 }
             }
-        } 
-       
+        }
+
+        private static void InterpredCommand(StringBuilder command, Word WordsInGame)
+        {
+
+        }
+
         private static void ShowScoreboard()
         {
             Console.WriteLine("Scoreboard:");
@@ -170,11 +177,11 @@
         private static void GiveHint(Word Game)
         {
             Console.WriteLine("OK, I reveal for you the next letter " + "\""
-							   + Game.PrintedWord.ToString()[Game.PrintedWord.ToString().IndexOf('_') / 2] + "\"");
+							   + Game.MaskedWord.ToString()[Game.MaskedWord.ToString().IndexOf('_') / 2] + "\"");
 
-			int FirstMissingLetter = Game.PrintedWord.ToString().IndexOf('_');
+			int FirstMissingLetter = Game.MaskedWord.ToString().IndexOf('_');
 
-			Game.WriteTheLetter(Game.PrintedWord.ToString()[FirstMissingLetter / 2]);
+			Game.WriteTheLetter(Game.MaskedWord.ToString()[FirstMissingLetter / 2]);
             NotUseHelp = false;
         }
     }
