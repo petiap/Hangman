@@ -6,44 +6,34 @@
 
     public class Word
     {
-        private string secretWord;
-        private StringBuilder maskedWord;
-
-        public Word(string secretWord, StringBuilder maskedWord)
+        public Word()
         {
-            this.SecretWord = secretWord;
-            this.MaskedWord = maskedWord;
+            this.SecretWord = RandomWordGenerator.GenerateWord();
+            this.MaskedWord = Word.Mask(this.SecretWord);
         }
 
-        public string SecretWord
+        public string SecretWord { get; private set; }
+
+        public string MaskedWord { get; private set; }
+
+        public static string Mask(string word)
         {
-            get
+            StringBuilder maskedWord = new StringBuilder(word.Length);
+
+            for (int i = 0; i < word.Length; i++)
             {
-                return this.secretWord;
+                maskedWord.Append("_ ");
             }
 
-            set
-            {
-                this.secretWord = value;
-            }
+            return maskedWord.ToString();
         }
 
-        public StringBuilder MaskedWord
+        // make it static or move out of class
+        public bool IsLetter(char symbol)
         {
-            get
-            {
-                return this.maskedWord;
-            }
+            symbol = char.ToLower(symbol);
 
-            private set
-            {
-                this.maskedWord = value;
-            }
-        }
-
-        public bool Isletter(char Theletter)
-        {
-            if (char.ToLower(Theletter) >= 'a' && char.ToLower(Theletter) <= 'z')
+            if (symbol >= 'a' && symbol <= 'z')
             {
                 return true;
             }
@@ -51,9 +41,11 @@
             return false;
         }
 
-        public bool CheckForLetter(char TheLetter)
+        public bool CheckForLetter(char letter)
         {
-            if (secretWord.Contains(char.ToLower(TheLetter)))
+            letter = char.ToLower(letter);
+
+            if (this.SecretWord.Contains(letter))
             {
                 return true;
             }
@@ -61,31 +53,39 @@
             return false;
         }
 
-        public string WriteTheLetter(char TheLetter)
+        // implement single responsibility
+        public string WriteTheLetter(char letter)
         {
+            StringBuilder unmaskedWord = new StringBuilder(this.MaskedWord);
+            char letterLowerCase = char.ToLower(letter);
 
-            for (int WordLenght = 0; WordLenght < secretWord.Length - 1; WordLenght++)
+            for (int wordLenght = 0; wordLenght < this.SecretWord.Length - 1; wordLenght++)
             {
-                if (this.secretWord.IndexOf(char.ToLower(TheLetter), WordLenght) >= 0)
+                int letterIndex = this.SecretWord.IndexOf(letterLowerCase, wordLenght);
+
+                if (letterIndex >= 0)
                 {
-                    this.maskedWord[this.secretWord.IndexOf(char.ToLower(TheLetter), WordLenght) * 2] = TheLetter;
+                    unmaskedWord[letterIndex * 2] = letter;
                 }
             }
 
-            return maskedWord.ToString();
+            this.MaskedWord = unmaskedWord.ToString();
+
+            return this.MaskedWord;
         }
 
-        public int NumberOfInput(char TheLetter)
+        public int NumberOfInput(char letter)
         {
-            int Number = 0;
+            int number = 0;
+            letter = char.ToLower(letter);
 
-            for (int WordLenght = 0; WordLenght < secretWord.Length; WordLenght++)
+            for (int wordLenght = 0; wordLenght < this.SecretWord.Length; wordLenght++)
             {
-                if (this.secretWord[WordLenght].Equals(char.ToLower(TheLetter)))
-                    Number++;
+                if (this.SecretWord[wordLenght].Equals(letter))
+                    number++;
             }
 
-            return Number;
+            return number;
         }
     }
 }
