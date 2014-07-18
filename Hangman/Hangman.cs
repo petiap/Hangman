@@ -8,51 +8,47 @@
     public class Hangman
     { 
 		const int LETTER = 1;
-        static char InputLetter;
+
         static bool NotUseHelp = true;
 
         static void Main()
         {
+            const string WELCOME_MESSAGE = "Welcome to “Hangman” game.Please try to guess my secret word. \n" +
+                "Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' to cheat and 'exit' to quit the game.";
+
             while (true)
             {
-                StringBuilder initialGameMessage = new StringBuilder();
-                initialGameMessage.AppendLine("Welcome to “Hangman” game.Please try to guess my secret word.");
-                initialGameMessage.AppendLine("Use 'top' to view the top scoreboard, 'restart' to start a new game, 'help' to cheat and 'exit' to quit the game.");
-
-                Console.Write(initialGameMessage);
+                Console.Write(WELCOME_MESSAGE);
 
                 Word secretWord = new Word();
 
                 int playerMistakes = 0;               
                                 
-                StringBuilder command = new StringBuilder();
-
+                //start new game
                 while (secretWord.MaskedWord.Contains('_'))
                 {
-                    //start new game
-
                     Console.WriteLine("The secret word is " + secretWord.MaskedWord);
-                    
-                    command.Clear();
 
                     Console.Write("Enter your guess: ");
-                    command.Append(Console.ReadLine());
+
+                    string command = Console.ReadLine();
 
                     if (command.Length == LETTER)
                     {
-                        InputLetter = command[0];
-                    }
+                        char letter = command[0];
 
-                    if (command.Length == LETTER && secretWord.IsLetter(char.ToLower(InputLetter)))
-                    {
-                        if (secretWord.CheckForLetter(char.ToLower(InputLetter)))
+                        if (secretWord.IsLetter(letter) && secretWord.ContainsLetter(letter))
                         {
-                            secretWord.WriteTheLetter(char.ToLower(InputLetter));
-                            Console.WriteLine("Good job! You revealed " + secretWord.NumberOfInput(InputLetter) + " letter");
+                            secretWord.RevealLetterPosition(letter);
+
+                            int numberOfOccurrences = secretWord.NumberOfLetterOccurrences(letter);
+                            string comment = numberOfOccurrences == 1 ? " letter" : " letters";
+
+                            Console.WriteLine("Good job! You revealed " + numberOfOccurrences + comment);
                         }
                         else
                         {
-                            Console.WriteLine("Sorry! There are no unrevealed letters " + "\"" + char.ToLower(InputLetter) + "\"");
+                            Console.WriteLine("Sorry! There are no unrevealed letters \'{0}\'", char.ToLower(letter));
                             playerMistakes++;
                         }
                     }
@@ -60,7 +56,7 @@
                     {
                         bool Restart = false;
 
-                        switch (command.ToString())
+                        switch (command)
                         {
                             case "help":
                                 {
@@ -135,11 +131,6 @@
             }
         }
 
-        private static void InterpredCommand(StringBuilder command, Word WordsInGame)
-        {
-
-        }
-
         private static void ShowScoreboard()
         {
             Console.WriteLine("Scoreboard:");
@@ -147,14 +138,15 @@
             Console.WriteLine(Scoreboard.ScoreboardInstance.ToString());                
         }
 
-        private static void GiveHint(Word Game)
+        private static void GiveHint(Word secretWord)
         {
-            Console.WriteLine("OK, I reveal for you the next letter " + "\""
-							   + Game.MaskedWord[Game.MaskedWord.IndexOf('_') / 2] + "\"");
+            char hintLetter = secretWord.MaskedWord[secretWord.MaskedWord.IndexOf('_') / 2];
 
-			int FirstMissingLetter = Game.MaskedWord.IndexOf('_');
+            Console.WriteLine("OK, I reveal for you the next letter \'{0}\'", hintLetter);
 
-			Game.WriteTheLetter(Game.MaskedWord[FirstMissingLetter / 2]);
+			int firstMissingLetter = secretWord.MaskedWord.IndexOf('_');
+
+			secretWord.RevealLetterPosition(secretWord.MaskedWord[firstMissingLetter / 2]);
             NotUseHelp = false;
         }
     }

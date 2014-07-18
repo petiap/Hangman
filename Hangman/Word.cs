@@ -41,7 +41,7 @@
             return false;
         }
 
-        public bool CheckForLetter(char letter)
+        public bool ContainsLetter(char letter)
         {
             letter = char.ToLower(letter);
 
@@ -54,7 +54,7 @@
         }
 
         // implement single responsibility
-        public string WriteTheLetter(char letter)
+        public string RevealLetterPosition(char letter)
         {
             StringBuilder unmaskedWord = new StringBuilder(this.MaskedWord);
             char letterLowerCase = char.ToLower(letter);
@@ -74,7 +74,7 @@
             return this.MaskedWord;
         }
 
-        public int NumberOfInput(char letter)
+        public int NumberOfLetterOccurrences(char letter)
         {
             int number = 0;
             letter = char.ToLower(letter);
