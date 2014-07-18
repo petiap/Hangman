@@ -6,15 +6,61 @@
 
     public class Word
     {
+		private string secretWord;
+		private string maskedWord;
+
         public Word()
         {
             this.SecretWord = RandomWordGenerator.GenerateWord();
             this.MaskedWord = Word.Mask(this.SecretWord);
         }
 
-        public string SecretWord { get; private set; }
+		// added for testing purposes only
+	    public Word(string secretWord, string maskedWord)
+	    {
+		    this.SecretWord = secretWord;
+		    this.MaskedWord = maskedWord;
+	    }
 
-        public string MaskedWord { get; private set; }
+	    public string SecretWord
+	    {
+			get { return this.secretWord; }
+		    private set
+		    {
+				decimal number;
+
+				if (String.IsNullOrWhiteSpace(value))
+				{
+					throw new ArgumentNullException("Value of word to guess is null or white space.");
+				}
+
+				if (decimal.TryParse(value, out number))
+				{
+					throw new ArgumentOutOfRangeException("Value of word to guess is a number.");
+				}
+				this.secretWord = value;
+		    }
+	    }
+
+		public string MaskedWord
+		{
+			get { return this.maskedWord; }
+			set
+			{
+				decimal number;
+
+				if (String.IsNullOrWhiteSpace(value.ToString()))
+				{
+					throw new ArgumentNullException("Value of printed word  is null or white space.");
+				}
+
+				if (decimal.TryParse(value, out number))
+				{
+					throw new ArgumentOutOfRangeException("Value of printed word is a number.");
+				}
+				this.maskedWord = value;
+			}
+		}
 
         public static string Mask(string word)
         {

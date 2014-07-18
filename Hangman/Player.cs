@@ -1,4 +1,6 @@
-﻿namespace Hangman
+﻿using System.Text;
+
+namespace Hangman
 {
     using System;
 
@@ -22,12 +24,18 @@
 
             set
             {
-                if (String.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentNullException("Name", "Value can't be null or an empty string");
-                }
+				decimal number;
 
-                this.name = value;
+				if (string.IsNullOrWhiteSpace(value))
+				{
+					throw new ArgumentNullException("Value of top player name is null or white space.");
+				}
+
+				if (decimal.TryParse(value, out number))
+				{
+					throw new ArgumentOutOfRangeException("Value of top player name is a number.");
+				}
+				this.name = value;
             }
         }
 
@@ -40,13 +48,35 @@
 
             set
             {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException("Score", "Value can't be negative");
-                }
+				if (string.IsNullOrWhiteSpace(value.ToString()))
+				{
+					throw new ArgumentNullException("Value of word to guess is null or white space.");
+				}
 
-                this.score = value;
+				if (value < 0)
+				{
+					throw new ArgumentOutOfRangeException("Value of the player score is less than zero.");
+				}
+
+				if (value > 28)
+				{
+					throw new ArgumentOutOfRangeException("Value of the player score is more" +
+						" than all letters in the alphabet.");
+				}
+
+				this.score = value;
             }
         }
+
+		// it will be better to have it here and call it in scoreboard directly
+	    public override string ToString()
+	    {
+		    StringBuilder str = new StringBuilder();
+		    string comment = this.Score == 1 ? "mistake" : "mistakes";
+
+		    str.Append(this.Name + " --> " + this.Score + " " + comment);
+
+		    return str.ToString();
+	    }
     }
 }
