@@ -26,13 +26,12 @@
 
         public static void GiveHint(Word secretWord)
         {
-            char hintLetter = secretWord.MaskedWord[secretWord.MaskedWord.IndexOf('_') / 2];
+            int firstMissingLetter = secretWord.MaskedWord.IndexOf('_');
+            char hintLetter = secretWord.SecretWord[firstMissingLetter / 2];
 
             Console.WriteLine("OK, I reveal for you the next letter \'{0}\'", hintLetter);
 
-            int firstMissingLetter = secretWord.MaskedWord.IndexOf('_');
-
-            secretWord.RevealLetterPosition(secretWord.MaskedWord[firstMissingLetter / 2]);
+            secretWord.RevealLetterPosition(hintLetter);
 
             notUseHelp = false;
         }

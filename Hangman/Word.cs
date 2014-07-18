@@ -18,7 +18,7 @@
 
         public static string Mask(string word)
         {
-            StringBuilder maskedWord = new StringBuilder(word.Length);
+            StringBuilder maskedWord = new StringBuilder(word.Length * 2);
 
             for (int i = 0; i < word.Length; i++)
             {
@@ -56,7 +56,7 @@
         // implement single responsibility
         public string RevealLetterPosition(char letter)
         {
-            StringBuilder unmaskedWord = new StringBuilder(this.MaskedWord);
+            StringBuilder maskedWordBuilder = new StringBuilder(this.MaskedWord);
             char letterLowerCase = char.ToLower(letter);
 
             for (int wordLenght = 0; wordLenght < this.SecretWord.Length - 1; wordLenght++)
@@ -65,11 +65,11 @@
 
                 if (letterIndex >= 0)
                 {
-                    unmaskedWord[letterIndex * 2] = letter;
+                    maskedWordBuilder[letterIndex * 2] = letter;
                 }
             }
 
-            this.MaskedWord = unmaskedWord.ToString();
+            this.MaskedWord = maskedWordBuilder.ToString();
 
             return this.MaskedWord;
         }
