@@ -1,25 +1,21 @@
 ﻿namespace Hangman
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public static class RandomWordGenerator
     {
         private static readonly string[] words = { 
-                                             "computer",
-                                             "programmer",
-                                             "software",
-                                             "debugger",
-                                             "compiler",
-                                             "developer",
-                                             "algorithm",
-                                             "array",
-                                             "method",
-                                             "variable"
-                                          };
+                                                     "computer",
+                                                     "programmer",
+                                                     "software",
+                                                     "debugger",
+                                                     "compiler",
+                                                     "developer",
+                                                     "algorithm",
+                                                     "array",
+                                                     "method",
+                                                     "variable"
+                                                 };
 
         private static Random randomWordGenerator;
 
@@ -28,13 +24,11 @@
             randomWordGenerator = new Random();
         }
 
-        public static string RandomWord { get; private set; }
-
         public static string GenerateWord()
         {
-            RandomWord = words[randomWordGenerator.Next(0, (words.Length - 1))];
+            string randomWord = words[randomWordGenerator.Next(0, (words.Length - 1))];
 
-            return RandomWord;
+            return randomWord;
         }
     }
 }
