@@ -49,7 +49,7 @@
 			{
 				decimal number;
 
-				if (String.IsNullOrWhiteSpace(value.ToString()))
+				if (string.IsNullOrWhiteSpace(value))
 				{
 					throw new ArgumentNullException("Value of printed word  is null or white space.");
 				}
