@@ -6,9 +6,33 @@
     {
         private static bool notUseHelp = true;
 
+		private static bool IsLetter(char symbol)
+        {
+            symbol = char.ToLower(symbol);
+
+            if (symbol >= 'a' && symbol <= 'z')
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+		private static bool ContainsLetter(char letter, Word secretWord)
+		{
+			string inner = char.ToLower(letter).ToString();
+
+			if (secretWord.SecretWord.Contains(inner))
+			{
+				return true;
+			}
+
+			return false;
+		}
+
         public static void GuessLetter(Word secretWord, char letter, int numberOfMistakes)
         {
-            if (secretWord.IsLetter(letter) && secretWord.ContainsLetter(letter))
+			if (IsLetter(letter) && ContainsLetter(letter, secretWord))
             {
                 secretWord.RevealLetterPosition(letter);
 

@@ -74,31 +74,6 @@
             return maskedWord.ToString();
         }
 
-        // make it static or move out of class
-        public bool IsLetter(char symbol)
-        {
-            symbol = char.ToLower(symbol);
-
-            if (symbol >= 'a' && symbol <= 'z')
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        public bool ContainsLetter(char letter)
-        {
-            letter = char.ToLower(letter);
-
-            if (this.SecretWord.Contains(letter))
-            {
-                return true;
-            }
-            
-            return false;
-        }
-
         // implement single responsibility
         public string RevealLetterPosition(char letter)
         {
