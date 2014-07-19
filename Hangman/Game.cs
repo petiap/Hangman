@@ -1,9 +1,11 @@
 ﻿namespace Hangman
 {
     using System;
-
+	
     public class Game
     {
+		private const int MaxPosibleMistakes=28;
+
         private GameState state;
         private Word word;
         private int mistakes;
@@ -13,19 +15,41 @@
             this.State = gameState;
         }
 
-        // TODO: Implement value checks
         public GameState State 
 		{ 
 			get { return this.state; }
-			// TODO: Implement value checks
-	        set { this.state = value; }
+	        set
+	        {
+				if (string.IsNullOrEmpty(value.ToString()))
+				{
+					throw new ArgumentNullException("Value of the state is null or missing.");
+				}
+
+		        this.state = value;
+	        }
 		}
 
 	    public Word Word
 	    {
 		    get { return this.word; }
-			// TODO: Implement value checks
-			set { this.word = value; }
+		    set
+		    {
+				if (string.IsNullOrEmpty(value.ToString()))
+				{
+					throw new ArgumentNullException("Value of the word is null or missing.");
+				}
+
+			    if (string.IsNullOrEmpty(value.MaskedWord))
+			    {
+					throw new ArgumentNullException("Value of the masked word is null or missing.");
+			    }
+
+				if (string.IsNullOrEmpty(value.SecretWord))
+				{
+					throw new ArgumentNullException("Value of the secret word is null or missing.");
+				}
+				this.word = value;
+		    }
 	    }
 
 		public int Mistakes
@@ -35,17 +59,17 @@
 			{
 				if (string.IsNullOrWhiteSpace(value.ToString()))
 				{
-					throw new ArgumentNullException("Value of word to guess is null or white space.");
+					throw new ArgumentNullException("Value of mistakes is null or white space.");
 				}
 
 				if (value < 0)
 				{
-					throw new ArgumentOutOfRangeException("Value of the player score is less than zero.");
+					throw new ArgumentOutOfRangeException("Value of the mistakes is less than zero.");
 				}
 
-				if (value > 28)
+				if (value > MaxPosibleMistakes)
 				{
-					throw new ArgumentOutOfRangeException("Value of the mistaces is more" +
+					throw new ArgumentOutOfRangeException("Value of the mistakes is more" +
 						" than all letters in the alphabet.");
 				}
 				this.mistakes = value;

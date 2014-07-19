@@ -12,7 +12,7 @@
         public Word()
         {
             this.SecretWord = RandomWordGenerator.GenerateWord();
-            this.MaskedWord = Word.Mask(this.SecretWord);
+            this.MaskedWord = Mask(this.SecretWord);
         }
 
 		// added for testing purposes only
