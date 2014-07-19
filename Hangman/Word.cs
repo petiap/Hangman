@@ -64,7 +64,7 @@
 
         public static string Mask(string word)
         {
-            StringBuilder maskedWord = new StringBuilder(word.Length * 2);
+            var maskedWord = new StringBuilder(word.Length * 2);
 
             for (int i = 0; i < word.Length; i++)
             {

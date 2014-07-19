@@ -14,11 +14,26 @@
         }
 
         // TODO: Implement value checks
-        public GameState State { get; set; }
+        public GameState State 
+		{ 
+			get { return this.state; }
+			// TODO: Implement value checks
+	        set { this.state = value; }
+		}
 
-        public Word Word { get; set; }
+	    public Word Word
+	    {
+		    get { return this.word; }
+			// TODO: Implement value checks
+			set { this.word = value; }
+	    }
 
-        public int NumberOfMistakes { get; set; }
+		public int Mistakes
+		{
+			get { return this.numberOfMistakes; }
+			// TODO: Implement value checks
+			set { this.numberOfMistakes = value; }
+		}
 
         public void Run()
         {

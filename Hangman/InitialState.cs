@@ -12,7 +12,7 @@
 			Console.Write(WelcomeMessage);
 
             game.Word = new Word();
-            game.NumberOfMistakes = 0;
+            game.Mistakes = 0;
 
             CommandInterpreter.AssignGameDelegate(() => game);
 

@@ -36,7 +36,7 @@
 
                 default:
                     Console.WriteLine("Incorect guess or command!");
-                    getGame().NumberOfMistakes++;
+                    getGame().Mistakes++;
                     break;
             }
         }
