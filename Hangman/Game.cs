@@ -6,7 +6,7 @@
     {
         private GameState state;
         private Word word;
-        private int numberOfMistakes;
+        private int mistakes;
 
         public Game(GameState gameState)
         {
@@ -30,9 +30,26 @@
 
 		public int Mistakes
 		{
-			get { return this.numberOfMistakes; }
-			// TODO: Implement value checks
-			set { this.numberOfMistakes = value; }
+			get { return this.mistakes; }
+			set
+			{
+				if (string.IsNullOrWhiteSpace(value.ToString()))
+				{
+					throw new ArgumentNullException("Value of word to guess is null or white space.");
+				}
+
+				if (value < 0)
+				{
+					throw new ArgumentOutOfRangeException("Value of the player score is less than zero.");
+				}
+
+				if (value > 28)
+				{
+					throw new ArgumentOutOfRangeException("Value of the mistaces is more" +
+						" than all letters in the alphabet.");
+				}
+				this.mistakes = value;
+			}
 		}
 
         public void Run()
