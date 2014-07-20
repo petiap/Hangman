@@ -6,8 +6,8 @@
 
     public class Word
     {
-		private string secretWord;
-		private string maskedWord;
+        private string secretWord;
+        private string maskedWord;
 
         public Word()
         {
@@ -15,52 +15,62 @@
             this.MaskedWord = Mask(this.SecretWord);
         }
 
-		// added for testing purposes only
-	    public Word(string secretWord, string maskedWord)
-	    {
-		    this.SecretWord = secretWord;
-		    this.MaskedWord = maskedWord;
-	    }
+        // added for testing purposes only
+        public Word(string secretWord, string maskedWord)
+        {
+            this.SecretWord = secretWord;
+            this.MaskedWord = maskedWord;
+        }
 
-	    public string SecretWord
-	    {
-			get { return this.secretWord; }
-		    private set
-		    {
-				decimal number;
+        public string SecretWord
+        {
+            get
+            {
+                return this.secretWord;
+            }
 
-				if (String.IsNullOrWhiteSpace(value))
-				{
-					throw new ArgumentNullException("Value of word to guess is null or white space.");
-				}
+            private set
+            {
+                decimal number;
 
-				if (decimal.TryParse(value, out number))
-				{
-					throw new ArgumentOutOfRangeException("Value of word to guess is a number.");
-				}
-				this.secretWord = value;
-		    }
-	    }
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentNullException("Value of word to guess is null or white space.");
+                }
 
-		public string MaskedWord
-		{
-			get { return this.maskedWord; }
-			set
-			{
-				decimal number;
+                if (decimal.TryParse(value, out number))
+                {
+                    throw new ArgumentOutOfRangeException("Value of word to guess is a number.");
+                }
 
-				if (string.IsNullOrWhiteSpace(value))
-				{
-					throw new ArgumentNullException("Value of printed word  is null or white space.");
-				}
+                this.secretWord = value;
+            }
+        }
 
-				if (decimal.TryParse(value, out number))
-				{
-					throw new ArgumentOutOfRangeException("Value of printed word is a number.");
-				}
-				this.maskedWord = value;
-			}
-		}
+        public string MaskedWord
+        {
+            get
+            {
+                return this.maskedWord;
+            }
+
+            set
+            {
+                decimal number;
+
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentNullException("Value of printed word  is null or white space.");
+                }
+
+                if (decimal.TryParse(value, out number))
+                {
+                    throw new ArgumentOutOfRangeException("Value of printed word is a number.");
+                }
+
+                this.maskedWord = value;
+            }
+        }
 
         public static string Mask(string word)
         {
@@ -103,7 +113,9 @@
             for (int wordLenght = 0; wordLenght < this.SecretWord.Length; wordLenght++)
             {
                 if (this.SecretWord[wordLenght].Equals(letter))
+                {
                     number++;
+                }
             }
 
             return number;

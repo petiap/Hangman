@@ -40,7 +40,7 @@
 				if (newPlayer.Score > topPlayers[TopPlayersCount-1].Score)
 				{
 					//replace the last and resort
-					this.topPlayers[TopPlayersCount-1] = newPlayer;
+					this.topPlayers[TopPlayersCount - 1] = newPlayer;
 					SortByHighestScore();
 				}
 			}
