@@ -10,9 +10,21 @@
         [TestMethod]
         public void DecodeCommandTests()
         {
-            string exampleWord = "computer";
+            Game game = new Game(new InitialState());
 
-            CommandInterpreter decodeCommand = new CommandInterpreter
+            game.Run();
+
+            string testExampleWord = "computer";
+            string testDecodeCommand = "help";
+
+            CommandInterpreter.Decode(testDecodeCommand);
+
+            // CommandInterpreter decodeCommandWord = new CommandInterpreter(testDecodeCommand);
+
+            // var decodeCommand = CommandInterpreter.AssignGameDelegate(GetGameDelegate);
+            // Assert.IsNotNull(decodeCommandWord);
+
+            Assert.AreEqual(game.Word, testExampleWord);
         }
     }
 }
