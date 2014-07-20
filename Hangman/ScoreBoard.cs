@@ -75,12 +75,7 @@
 				return false;
 			}
 		}
-
-        private void SortByHighestScore()
-        {
-            this.topPlayers = this.topPlayers.OrderByDescending(player => player.Score).ToList();
-        }
-
+        
         public override string ToString()
         {
             StringBuilder scoreboard = new StringBuilder();
@@ -100,6 +95,11 @@
             }
 
             return scoreboard.ToString();
+        }
+
+        private void SortByHighestScore()
+        {
+            this.topPlayers = this.topPlayers.OrderByDescending(player => player.Score).ToList();
         }
     }
 }
