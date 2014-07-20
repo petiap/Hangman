@@ -1,8 +1,8 @@
 ﻿namespace HangmanTest
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Hangman;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class PlayerTests
@@ -24,7 +24,7 @@
         [ExpectedException(typeof(ArgumentNullException))]
         public void PlayerInstantiatedWithIncorrectNameThrowsException()
         {
-            string testPlayerName = "";
+            string testPlayerName = string.Empty;
             int testPlayerScore = 27;
             Player testPlayer;
 
@@ -81,7 +81,7 @@
 		[ExpectedException(typeof(ArgumentNullException))]
 		public void TopPlayerNameAsEmptyString()
 		{
-			string name = "";
+            string name = string.Empty;
 			int score = 5;
 
 			Player topPlayer = new Player(name, score);
@@ -125,13 +125,14 @@
 
 			Player topPlayer = new Player(name, int.Parse(null));
 		}
+
 		[TestMethod]
 		[ExpectedException(typeof(FormatException))]
 		public void TopPlayerScoreAsEmptyString()
 		{
 			string name = "New Guy";
 
-			Player topPlayer = new Player(name, int.Parse(""));
+			Player topPlayer = new Player(name, int.Parse(string.Empty));
 		}
     }
 }

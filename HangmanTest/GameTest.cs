@@ -1,8 +1,9 @@
 ﻿namespace HangmanTest
 {
-	using System;
-	using Microsoft.VisualStudio.TestTools.UnitTesting;
-	using Hangman;
+    using System;
+    using Hangman;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    
 	[TestClass]
 	public class GameTest
 	{
@@ -51,8 +52,6 @@
 			Game game = new Game(new InitialState());
 
 			game.Run();
-
-
-		}
+        }
 	}
 }

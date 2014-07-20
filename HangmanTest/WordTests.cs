@@ -1,9 +1,9 @@
 ﻿namespace HangmanTest
 {
     using System;
+    using Hangman;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-	using Hangman;
-
+	
     [TestClass]
     public class WordTests
     {
@@ -17,7 +17,7 @@
 
 			Assert.IsNotNull(word);
 			Assert.AreEqual(inputWord, word.SecretWord);
-			Assert.AreEqual(strBuild,word.MaskedWord);
+			Assert.AreEqual(strBuild, word.MaskedWord);
 		}
 
 		[TestMethod]
@@ -128,7 +128,7 @@
 		[ExpectedException(typeof(ArgumentNullException))]
 		public void InputForWordToGuessAsEmptyString()
 		{
-			string inputWord = "";
+			string inputWord = string.Empty;
 			string strBuild = "dfhc";
 
 			Word word = new Word(inputWord, strBuild);
@@ -139,7 +139,7 @@
 		public void InputForWordToPrintAsEmptyString()
 		{
 			string inputWord = "sdfh";
-			string strBuild = "";
+			string strBuild = string.Empty;
 
 			Word word = new Word(inputWord, strBuild);
 		}
