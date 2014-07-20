@@ -1,8 +1,7 @@
-﻿using System.Text;
-
-namespace Hangman
+﻿namespace Hangman
 {
     using System;
+    using System.Text;
 
     public class Player
     {
@@ -35,6 +34,7 @@ namespace Hangman
 				{
 					throw new ArgumentOutOfRangeException("Value of top player name is a number.");
 				}
+
 				this.name = value;
             }
         }

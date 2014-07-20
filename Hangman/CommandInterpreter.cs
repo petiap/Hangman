@@ -7,7 +7,7 @@
     public static class CommandInterpreter
     {
         private static GetGameDelegate getGame;
-   //     private string command;
+        // private string command;
 
         public static void AssignGameDelegate(GetGameDelegate getGameDelegate)
         {

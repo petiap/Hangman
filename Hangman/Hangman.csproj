@@ -45,7 +45,9 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameEngine.cs" />
     <Compile Include="GameState.cs" />
-    <Compile Include="Hangman.cs" />
+    <Compile Include="Hangman.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="InitialState.cs" />
     <Compile Include="PlayState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

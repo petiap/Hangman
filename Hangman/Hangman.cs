@@ -4,13 +4,13 @@
 
     public class Hangman
     {
-        static void Main()
+        public static void Main()
         {
             Game game = new Game(new InitialState());
 
             while (true)
             {
-                //start new game
+                // start new game
                 game.Run();
             }
         }

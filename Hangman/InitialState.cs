@@ -1,6 +1,7 @@
 ﻿namespace Hangman
 {
     using System;
+
     public class InitialState : GameState
     {
         const string WelcomeMessage = "Welcome to “Hangman” game.Please try to guess my secret word. \n" +

@@ -4,18 +4,19 @@
 
     public static class RandomWordGenerator
     {
-        private static readonly string[] words = { 
-                                                     "computer",
-                                                     "programmer",
-                                                     "software",
-                                                     "debugger",
-                                                     "compiler",
-                                                     "developer",
-                                                     "algorithm",
-                                                     "array",
-                                                     "method",
-                                                     "variable"
-                                                 };
+        private static readonly string[] Words = 
+        { 
+            "computer",
+            "programmer",
+            "software",
+            "debugger",
+            "compiler",
+            "developer",
+            "algorithm",
+            "array",
+            "method",
+            "variable"
+        };
 
         private static Random randomWordGenerator;
 
@@ -26,7 +27,7 @@
 
         public static string GenerateWord()
         {
-            string randomWord = words[randomWordGenerator.Next(0, (words.Length - 1))];
+            string randomWord = Words[randomWordGenerator.Next(0, (Words.Length - 1))];
 
             return randomWord;
         }

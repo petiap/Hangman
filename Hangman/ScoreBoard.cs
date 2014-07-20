@@ -26,7 +26,7 @@
 
         public void AddPlayer(Player newPlayer)
         {
-			if (topPlayers.Count==0)
+			if (topPlayers.Count == 0)
 	        {
 		         this.topPlayers.Add(newPlayer);
 	        }
