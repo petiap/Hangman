@@ -8,7 +8,7 @@
         
         public static void GuessLetter(Word secretWord, char letter, int numberOfMistakes)
         {
-            if (IsLetter(letter) && ContainsLetter(letter, secretWord))
+            if (secretWord.ContainsLetter(letter))
             {
                 secretWord.RevealLetterPosition(letter);
 
@@ -72,30 +72,6 @@
             Console.WriteLine("Scoreboard:");
 
             Console.WriteLine(Scoreboard.ScoreboardInstance.ToString());
-        }
-
-        private static bool IsLetter(char symbol)
-        {
-            symbol = char.ToLower(symbol);
-
-            if (symbol >= 'a' && symbol <= 'z')
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private static bool ContainsLetter(char letter, Word secretWord)
-        {
-            string inner = char.ToLower(letter).ToString();
-
-            if (secretWord.SecretWord.Contains(inner))
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }

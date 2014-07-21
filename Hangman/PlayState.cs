@@ -15,16 +15,7 @@
 
                 string command = Console.ReadLine();
 
-                if (command.Length == 1)
-                {
-                    char letter = command[0];
-
-                    GameEngine.GuessLetter(game.Word, letter, game.NumberOfMistakes);
-                }
-                else
-                {
-                    CommandInterpreter.Decode(command);
-                }
+                CommandInterpreter.Decode(command);
             }
             else
             {

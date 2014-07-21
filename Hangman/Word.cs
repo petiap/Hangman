@@ -15,13 +15,6 @@
             this.MaskedWord = Mask(this.SecretWord);
         }
 
-        // added for testing purposes only
-        public Word(string secretWord, string maskedWord)
-        {
-            this.SecretWord = secretWord;
-            this.MaskedWord = maskedWord;
-        }
-
         public string SecretWord
         {
             get
@@ -31,16 +24,9 @@
 
             private set
             {
-                decimal number;
-
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentNullException("Value of word to guess is null or white space.");
-                }
-
-                if (decimal.TryParse(value, out number))
-                {
-                    throw new ArgumentOutOfRangeException("Value of word to guess is a number.");
+                    throw new ArgumentNullException("SecretWord", "Value can't be null or empty string");
                 }
 
                 this.secretWord = value;
@@ -54,34 +40,27 @@
                 return this.maskedWord;
             }
 
-            set
+            private set
             {
-                decimal number;
-
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentNullException("Value of printed word  is null or white space.");
-                }
-
-                if (decimal.TryParse(value, out number))
-                {
-                    throw new ArgumentOutOfRangeException("Value of printed word is a number.");
+                    throw new ArgumentNullException("MaskedWord", "Value can't be null or empty string");
                 }
 
                 this.maskedWord = value;
             }
         }
-
-        public static string Mask(string word)
+        
+        public bool ContainsLetter(char letter)
         {
-            var maskedWord = new StringBuilder(word.Length * 2);
+            letter = char.ToLower(letter);
 
-            for (int i = 0; i < word.Length; i++)
+            if (this.SecretWord.Contains(letter))
             {
-                maskedWord.Append("_ ");
+                return true;
             }
 
-            return maskedWord.ToString();
+            return false;
         }
 
         // implement single responsibility
@@ -119,6 +98,18 @@
             }
 
             return number;
+        }
+
+        private string Mask(string word)
+        {
+            var maskedWord = new StringBuilder(word.Length * 2);
+
+            for (int i = 0; i < word.Length; i++)
+            {
+                maskedWord.Append("_ ");
+            }
+
+            return maskedWord.ToString();
         }
     }
 }

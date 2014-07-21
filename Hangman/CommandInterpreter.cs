@@ -35,10 +35,32 @@
                     break;
 
                 default:
+                    if (command.Length == 1)
+                    {
+                        char letter = command[0];
+
+                        if (IsValidLetter(letter))
+                        {
+                            GameEngine.GuessLetter(getGame().Word, letter, getGame().NumberOfMistakes);
+                        }
+                    }
+
                     Console.WriteLine("Incorect guess or command!");
                     getGame().NumberOfMistakes++;
                     break;
             }
+        }
+
+        public static bool IsValidLetter(char symbol)
+        {
+            symbol = char.ToLower(symbol);
+
+            if (symbol >= 'a' && symbol <= 'z')
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
