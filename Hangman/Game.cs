@@ -38,7 +38,7 @@
                 return this.word;
             }
 
-            private set
+            set
             {
                 if (string.IsNullOrWhiteSpace(value.SecretWord))
                 {
