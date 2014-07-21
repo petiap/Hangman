@@ -1,7 +1,5 @@
 ﻿namespace Hangman
 {
-    using System;
-
     public class Hangman
     {
         public static void Main()
