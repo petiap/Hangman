@@ -19,7 +19,7 @@
                 {
                     char letter = command[0];
 
-                    GameEngine.GuessLetter(game.Word, letter, game.Mistakes);
+                    GameEngine.GuessLetter(game.Word, letter, game.NumberOfMistakes);
                 }
                 else
                 {
@@ -28,8 +28,8 @@
             }
             else
             {
-                GameEngine.EstimateScore(game.Word, game.Mistakes);
-                game.Mistakes = 0;
+                GameEngine.EstimateScore(game.Word, game.NumberOfMistakes);
+                game.NumberOfMistakes = 0;
             }
         } 
     }

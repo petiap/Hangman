@@ -4,11 +4,9 @@
 
     public class Game
     {
-        private const int MaxPosibleMistakes = 28;
-
         private GameState state;
         private Word word;
-        private int mistakes;
+        private int numberOfMistakes;
 
         public Game(GameState gameState)
         {
@@ -24,9 +22,9 @@
 
             set
             {
-                if (string.IsNullOrEmpty(value.ToString()))
+                if (!(value is InitialState || value is PlayState))
                 {
-                    throw new ArgumentNullException("Value of the state is null or missing.");
+                    throw new ArgumentException("State", "Incorrect type of state value");
                 }
 
                 this.state = value;
@@ -35,58 +33,40 @@
 
         public Word Word
         {
-            get 
+            get
             {
-                return this.word; 
+                return this.word;
             }
 
-            set
+            private set
             {
-                if (string.IsNullOrEmpty(value.ToString()))
+                if (string.IsNullOrWhiteSpace(value.SecretWord))
                 {
-                    throw new ArgumentNullException("Value of the word is null or missing.");
+                    throw new ArgumentNullException("Word.SecretWord", "Value can't be null or empty string");
                 }
 
-                if (string.IsNullOrEmpty(value.MaskedWord))
+                if (string.IsNullOrWhiteSpace(value.MaskedWord))
                 {
-                    throw new ArgumentNullException("Value of the masked word is null or missing.");
+                    throw new ArgumentNullException("Word.MaskedWord", "Value can't be null or empty string");
                 }
-
-                if (string.IsNullOrEmpty(value.SecretWord))
-                {
-                    throw new ArgumentNullException("Value of the secret word is null or missing.");
-                }
-
-                this.word = value;
             }
         }
 
-        public int Mistakes
+        public int NumberOfMistakes
         {
             get 
             {
-                return this.mistakes; 
+                return this.numberOfMistakes; 
             }
 
             set
             {
-                if (string.IsNullOrWhiteSpace(value.ToString()))
-                {
-                    throw new ArgumentNullException("Value of mistakes is null or white space.");
-                }
-
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("Value of the mistakes is less than zero.");
+                    throw new ArgumentOutOfRangeException("NumberOfMistakes", "Value can't be negative");
                 }
 
-                if (value > MaxPosibleMistakes)
-                {
-                    throw new ArgumentOutOfRangeException("Value of the mistakes is more" +
-                        " than all letters in the alphabet.");
-                }
-
-                this.mistakes = value;
+                this.numberOfMistakes = value;
             }
         }
 

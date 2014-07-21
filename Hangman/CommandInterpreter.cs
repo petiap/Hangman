@@ -7,36 +7,12 @@
     public static class CommandInterpreter
     {
         private static GetGameDelegate getGame;
-        // private string command;
 
         public static void AssignGameDelegate(GetGameDelegate getGameDelegate)
         {
             getGame = getGameDelegate;
         }
 
-        // added for testing purposes only
-   /*     public CommandInterpreter(string command)
-        {
-            this.Command = command;
-        }
-
-        public string Command
-        {
-            get
-            {
-                return this.command;
-            }
-
-            set
-            {
-                if (string.IsNullOrEmpty(value.ToString()))
-				{
-					throw new ArgumentNullException("Value of the word is null or missing.");
-				}
-                this.command = value;
-            }
-        }
-    */
         public static void Decode(string command)
         {
             switch (command)
@@ -60,7 +36,7 @@
 
                 default:
                     Console.WriteLine("Incorect guess or command!");
-                    getGame().Mistakes++;
+                    getGame().NumberOfMistakes++;
                     break;
             }
         }
