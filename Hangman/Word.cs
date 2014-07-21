@@ -63,7 +63,6 @@
             return false;
         }
 
-        // implement single responsibility
         public string RevealLetterPosition(char letter)
         {
             StringBuilder maskedWordBuilder = new StringBuilder(this.MaskedWord);
