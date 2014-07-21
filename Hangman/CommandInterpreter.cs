@@ -22,6 +22,7 @@
                     break;
 
                 case "exit":
+                    Console.WriteLine("Good bye!");
                     Environment.Exit(0);
                     break;
 
