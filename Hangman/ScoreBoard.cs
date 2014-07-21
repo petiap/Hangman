@@ -33,7 +33,7 @@
 
         public void AddPlayer(Player newPlayer)
         {
-            this.topPlayers = new List<Player>();
+            this.topPlayers.Add(newPlayer);
         }
 
         public bool IsNewTopScore(double topScoreCandidate)
