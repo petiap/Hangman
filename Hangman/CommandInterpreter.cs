@@ -40,7 +40,7 @@
                     {
                         char letter = command[0];
 
-                        GameEngine.GuessLetter(getGame().Word, letter, getGame().NumberOfMistakes);
+                        GameEngine.GuessLetter(getGame(), letter);
                     }
                     else
                     {

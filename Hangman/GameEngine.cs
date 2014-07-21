@@ -6,13 +6,13 @@
     {
         private static bool notUseHelp = true;
         
-        public static void GuessLetter(Word secretWord, char letter, int numberOfMistakes)
+        public static void GuessLetter(Game currentGame, char letter)
         {
-            if (secretWord.ContainsLetter(letter))
+            if (currentGame.Word.ContainsLetter(letter))
             {
-                secretWord.RevealLetterPosition(letter);
+                currentGame.Word.RevealLetterPosition(letter);
 
-                int numberOfOccurrences = secretWord.NumberOfLetterOccurrences(letter);
+                int numberOfOccurrences = currentGame.Word.NumberOfLetterOccurrences(letter);
                 string comment = numberOfOccurrences == 1 ? " letter" : " letters";
 
                 Console.WriteLine("Good job! You revealed " + numberOfOccurrences + comment);
@@ -20,7 +20,7 @@
             else
             {
                 Console.WriteLine("Sorry! There are no unrevealed letters \"{0}\"", char.ToLower(letter));
-                numberOfMistakes++;
+                currentGame.NumberOfMistakes++;
             }
         }
 
