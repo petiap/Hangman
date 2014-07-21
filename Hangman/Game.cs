@@ -49,6 +49,8 @@
                 {
                     throw new ArgumentNullException("Word.MaskedWord", "Value can't be null or empty string");
                 }
+
+                this.word = value;
             }
         }
 
