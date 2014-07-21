@@ -15,12 +15,14 @@
 
                 string command = Console.ReadLine();
 
-                CommandInterpreter.Decode(command);
+                CommandInterpreter.Decode(command);            
             }
             else
             {
                 GameEngine.EstimateScore(game.Word, game.NumberOfMistakes);
                 game.NumberOfMistakes = 0;
+
+                game.State = new InitialState();
             }
         } 
     }
