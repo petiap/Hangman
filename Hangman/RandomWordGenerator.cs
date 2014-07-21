@@ -4,7 +4,7 @@
 
     public static class RandomWordGenerator
     {
-        private static readonly string[] Words = 
+        private static readonly string[] WORDS = 
         { 
             "computer",
             "programmer",
@@ -27,7 +27,7 @@
 
         public static string GenerateWord()
         {
-            string randomWord = Words[randomWordGenerator.Next(0, (Words.Length - 1))];
+            string randomWord = WORDS[randomWordGenerator.Next(0, (WORDS.Length - 1))];
 
             return randomWord;
         }
