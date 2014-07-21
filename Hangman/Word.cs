@@ -40,7 +40,7 @@
                 return this.maskedWord;
             }
 
-            private set
+            set
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
