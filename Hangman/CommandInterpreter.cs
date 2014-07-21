@@ -35,18 +35,18 @@
                     break;
 
                 default:
-                    if (command.Length == 1)
+                    if (command.Length == 1 && IsValidLetter(command[0]))
                     {
                         char letter = command[0];
 
-                        if (IsValidLetter(letter))
-                        {
-                            GameEngine.GuessLetter(getGame().Word, letter, getGame().NumberOfMistakes);
-                        }
+                        GameEngine.GuessLetter(getGame().Word, letter, getGame().NumberOfMistakes);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorect guess or command!");
+                        getGame().NumberOfMistakes++;
                     }
 
-                    Console.WriteLine("Incorect guess or command!");
-                    getGame().NumberOfMistakes++;
                     break;
             }
         }
