@@ -13,10 +13,10 @@
 			string inputWord = "string";
 			string strBuild = "stringBuilder";
 
-			Word word = new Word(inputWord, strBuild);
+			Word word = new Word();
 
 			Assert.IsNotNull(word);
-			Assert.AreEqual(inputWord, word.SecretWord);
+			Assert.AreEqual(inputWord, word.SecretWord, "Wrong word!");
 			Assert.AreEqual(strBuild, word.MaskedWord);
 		}
 
@@ -31,67 +31,59 @@
 		[TestMethod]
 		public void WordContainsLetter()
 		{
-			string inputWord = "string";
-			string strBuild = "stringBuilder";
 			char letter = 't';
 
-			Word word = new Word(inputWord, strBuild);
+            Word word = new Word();
 
 			bool hasLetter = word.ContainsLetter(letter);
 
-			Assert.AreEqual(hasLetter, true);
+            Assert.AreEqual(hasLetter, true, "This letter isn't included in the word");
 		}
 
 		[TestMethod]
 		public void WordNotContainsLetter()
 		{
-			string inputWord = "string";
-			string strBuild = "stringBuilder";
 			char letter = 'h';
 
-			Word word = new Word(inputWord, strBuild);
+            Word word = new Word();
 
 			bool hasLetter = word.ContainsLetter(letter);
 
 			Assert.AreEqual(hasLetter, false);
 		}
-
+        
 		[TestMethod]
 		public void TheLetterAsNumber()
 		{
-			string inputWord = "string";
-			string strBuild = "stringBuilder";
 			char letter = '1';
 
-			Word word = new Word(inputWord, strBuild);
+            Word word = new Word();
 
 			bool hasLetter = word.ContainsLetter(letter);
 
-			Assert.AreEqual(hasLetter, false);
+            Assert.AreEqual(hasLetter, false, "The word can't contain a number!");
 		}
 
 		[TestMethod]
 		public void TheLetterAsSomeChar()
 		{
-			string inputWord = "string";
-			string strBuild = "stringBuilder";
 			char letter = '%';
 
-			Word word = new Word(inputWord, strBuild);
+            Word word = new Word();
 
 			bool hasLetter = word.ContainsLetter(letter);
 
-			Assert.AreEqual(hasLetter,false);
+			Assert.AreEqual(hasLetter, false, "The word can't contain a char!");
 		}
 
-		[TestMethod]
+	/*	[TestMethod]
 		[ExpectedException(typeof(ArgumentOutOfRangeException))]
 		public void WordNumberAsInputForWordToGuess()
 		{
 			string inputWord = "11";
 			string strBuild = "dfhc";
 
-			Word word = new Word(inputWord, strBuild);
+            Word word = new Word();
 		}
 
 		[TestMethod]
@@ -101,7 +93,7 @@
 			string inputWord = "sdfh";
 			string strBuild = "11";
 
-			Word word = new Word(inputWord, strBuild);
+            Word word = new Word(); ;
 		}
 
 		[TestMethod]
@@ -111,7 +103,7 @@
 			string inputWord = " ";
 			string strBuild = "dfhc";
 
-			Word word = new Word(inputWord, strBuild);
+            Word word = new Word();
 		}
 
 		[TestMethod]
@@ -121,7 +113,7 @@
 			string inputWord = "sdfh";
 			string strBuild = " ";
 
-			Word word = new Word(inputWord, strBuild);
+            Word word = new Word();
 		}
 
 		[TestMethod]
@@ -131,7 +123,7 @@
 			string inputWord = string.Empty;
 			string strBuild = "dfhc";
 
-			Word word = new Word(inputWord, strBuild);
+            Word word = new Word();
 		}
 
 		[TestMethod]
@@ -141,36 +133,33 @@
 			string inputWord = "sdfh";
 			string strBuild = string.Empty;
 
-			Word word = new Word(inputWord, strBuild);
+            Word word = new Word();
 		}
-
+        */
 		[TestMethod]
 		public void WordIndexOfLetter()
 		{
-			string inputWord = "string";
-			string strBuild = "stringBuilder";
 			char letter = 't';
 
-			Word word = new Word(inputWord, strBuild);
+            Word word = new Word();
 
 			int letterIndex = word.NumberOfLetterOccurrences(letter);
 
-			Assert.AreEqual(letterIndex, 1);
+			Assert.AreEqual(letterIndex, 1, "Wrong number of appropriate letters");
 		}
 
 	    [TestMethod]
 	    public void WordWriteTheLetterInHiddenWord()
 	    {
 		    string inputWord = "string";
-		    string strBuild = "_ _ _ _ _ _";
 		    char letter = 't';
 
-		    Word word = new Word(inputWord, strBuild);
+            Word word = new Word();
 
 			string writhedLetter = word.RevealLetterPosition(letter);
 
-		    Assert.AreEqual("_ t _ _ _ _", writhedLetter);
-		    Assert.AreEqual(inputWord, word.SecretWord);
+		    Assert.AreEqual("_ t _ _ _ _", writhedLetter, "This letter isn't included in the word!");
+		    Assert.AreEqual(inputWord, word.SecretWord, "Wrong word!");
 	    }
 
 		[TestMethod]
@@ -178,22 +167,19 @@
 		{
 			char letter = 't';
 
-			Word word = new Word();
+            bool isLetter = CommandInterpreter.IsValidLetter(letter);
 
-			bool isLetter = word.IsLetter(letter);
-
-			Assert.AreEqual(isLetter, true);
+			Assert.AreEqual(isLetter, true, "This letter isn't included in the word");
 		}
 
 		[TestMethod]
 		public void WordIsLetterAsNonLetter()
 		{
 			char letter = '$';
-			Word word = new Word();
 
-			bool isLetter = word.IsLetter(letter);
+            bool isLetter = CommandInterpreter.IsValidLetter(letter);
 
-			Assert.AreEqual(isLetter, false);
+			Assert.AreEqual(isLetter, false, "The word can contain only a letters!");
 		}
     }
 }
