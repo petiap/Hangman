@@ -76,66 +76,6 @@
 			Assert.AreEqual(hasLetter, false, "The word can't contain a char!");
 		}
 
-	/*	[TestMethod]
-		[ExpectedException(typeof(ArgumentOutOfRangeException))]
-		public void WordNumberAsInputForWordToGuess()
-		{
-			string inputWord = "11";
-			string strBuild = "dfhc";
-
-            Word word = new Word();
-		}
-
-		[TestMethod]
-		[ExpectedException(typeof(ArgumentOutOfRangeException))]
-		public void WordNumberAsInputForWordToPrint()
-		{
-			string inputWord = "sdfh";
-			string strBuild = "11";
-
-            Word word = new Word(); ;
-		}
-
-		[TestMethod]
-		[ExpectedException(typeof(ArgumentNullException))]
-		public void InputForWordToGuessAsWhitespace()
-		{
-			string inputWord = " ";
-			string strBuild = "dfhc";
-
-            Word word = new Word();
-		}
-
-		[TestMethod]
-		[ExpectedException(typeof(ArgumentNullException))]
-		public void InputForWordToPrintAsWhitespace()
-		{
-			string inputWord = "sdfh";
-			string strBuild = " ";
-
-            Word word = new Word();
-		}
-
-		[TestMethod]
-		[ExpectedException(typeof(ArgumentNullException))]
-		public void InputForWordToGuessAsEmptyString()
-		{
-			string inputWord = string.Empty;
-			string strBuild = "dfhc";
-
-            Word word = new Word();
-		}
-
-		[TestMethod]
-		[ExpectedException(typeof(ArgumentNullException))]
-		public void InputForWordToPrintAsEmptyString()
-		{
-			string inputWord = "sdfh";
-			string strBuild = string.Empty;
-
-            Word word = new Word();
-		}
-        */
 		[TestMethod]
 		public void WordIndexOfLetter()
 		{
