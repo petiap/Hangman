@@ -1,0 +1,21 @@
+TODO:
+  1. Refactor the code
+    - basic refactoring - DONE
+    - debugging - DONE
+    - implement missing functionality - DONE
+    - test for compliance with the specification - DONE
+  2. Write Unit Tests
+    - add unit tests for the existing classes - DONE
+  3. Implement Data Patterns
+    - implement 2 Creational patterns - DONE
+        - implemented Singleton pattern
+        - implemented Lazy-Initialization pattern
+        Note: The combination of Singleton and Lazy-Initialization patterns
+              is a pattern known as Initialization-on-Demand Holder Idiom
+              (http://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom),
+              which effectively results in a thread-safe lazy singleton initialization              
+    - implement 2 Structural patterns
+    - implement 2 Behavioral patterns
+        - implemented State pattern
+  4. Documentation
+    - detailed step-by-step description of th erefactoring process
