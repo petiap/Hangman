@@ -15,7 +15,8 @@ TODO:
               (http://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom),
               which effectively results in a thread-safe lazy singleton initialization              
     - implement 2 Structural patterns
-    - implement 2 Behavioral patterns
+    - implement 2 Behavioral patterns - DONE
         - implemented State pattern
+        - implemented Mediator pattern
   4. Documentation
     - detailed step-by-step description of th erefactoring process
