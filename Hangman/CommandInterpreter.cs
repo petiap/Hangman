@@ -4,7 +4,7 @@
 
     public delegate Game GetGameDelegate();
 
-    public static class CommandInterpreter
+    public class CommandInterpreter : Decoder
     {
         private static GetGameDelegate getGame;
 
@@ -13,7 +13,7 @@
             getGame = getGameDelegate;
         }
 
-        public static void Decode(string command)
+        public override void Decode(string command)
         {
             switch (command)
             {

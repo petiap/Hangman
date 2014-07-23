@@ -15,7 +15,9 @@
 
                 string command = Console.ReadLine();
 
-                CommandInterpreter.Decode(command);            
+                CommandInterpreter decoder = new CommandInterpreter();
+
+                decoder.Decode(command);
             }
             else
             {
