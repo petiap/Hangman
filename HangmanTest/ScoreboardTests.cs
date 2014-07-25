@@ -15,6 +15,8 @@
         {
 			var scoreboardMock = Scoreboard.ScoreboardInstance;
             //var scoreboardMock = new Mock<Scoreboard>();
+
+			Assert.IsNotNull(scoreboardMock);
         }
 
 		[TestMethod]
@@ -31,7 +33,7 @@
         public void VerifyThatAddPlayerWorksCorrectly()
         {
             string testPlayerName = "Rinswind";
-            int testPlayerScore = 2;
+            int testPlayerScore = 29;
             Player testPlayer = new Player(testPlayerName, testPlayerScore);
 			var scoreboardMock = Scoreboard.ScoreboardInstance;
 
@@ -62,10 +64,8 @@
 
 			var scoreboard = scoreboardMock.ToString();
 
-			Assert.AreEqual("1. Pesho --> 23 mistakes\r\n2. Pencho --> 19 mistakes\r\n3. Muncho --> 10 mistakes\r\n4. Rinswind --> 7 mistakes\r\n5. Rinswinda --> 4 mistakes\r\n", scoreboard);
+			Assert.AreEqual("1. Rinswinda --> 4 mistakes\r\n2. Rinswind --> 7 mistakes\r\n3. Muncho --> 10 mistakes\r\n4. Pencho --> 19 mistakes\r\n5. Pesho --> 23 mistakes\r\n", scoreboard);
 		}
-
-		
 
 		[TestMethod]
 		public void VerifyScoreboardIsNewTopScoreWorksAsTrue()

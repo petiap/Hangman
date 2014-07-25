@@ -15,7 +15,9 @@
 
 			CommandInterpreter.AssignGameDelegate(() => game);
 
-			CommandInterpreter.Decode("help");
+			var decoder = new CommandInterpreter();
+
+			decoder.Decode("help");
 		}
 
 		[TestMethod]
@@ -27,7 +29,9 @@
 
 			CommandInterpreter.AssignGameDelegate(() => game);
 
-			CommandInterpreter.Decode("restart");
+			var decoder = new CommandInterpreter();
+
+			decoder.Decode("restart");
 		}
 
 		[TestMethod]
@@ -39,7 +43,23 @@
 
 			CommandInterpreter.AssignGameDelegate(() => game);
 
-			CommandInterpreter.Decode("top");
+			var decoder = new CommandInterpreter();
+
+			decoder.Decode("top");
+		}
+
+		[TestMethod]
+		public void CommandInterpreterDecodeLetterInput()
+		{
+			Game game = new Game(new InitialState());
+
+			game.Word = new Word();
+
+			CommandInterpreter.AssignGameDelegate(() => game);
+
+			var decoder = new CommandInterpreter();
+
+			decoder.Decode("t");
 		}
 
 		[TestMethod]
@@ -51,7 +71,9 @@
 
 			CommandInterpreter.AssignGameDelegate(() => game);
 
-			CommandInterpreter.Decode("tophere");
+			var decoder = new CommandInterpreter();
+
+			decoder.Decode("tophere");
 		}
 
         [TestMethod]
