@@ -38,15 +38,6 @@
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(ArgumentOutOfRangeException))]
-		public void GameMistakeAsMoreThanAlowed()
-		{
-			Game game = new Game(new InitialState());
-
-			game.NumberOfMistakes = 29;
-		}
-
-		[TestMethod]
 		public void GameRunTest()
 		{
 			Game game = new Game(new InitialState());

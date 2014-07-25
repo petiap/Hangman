@@ -27,7 +27,7 @@
 
 			scoreboardMock.AddPlayer(testPlayer);
 
-            var scoreboard = scoreboardMock.SortByHighestScore();
+            var scoreboard = scoreboardMock.ToString();
 
 			Assert.AreEqual(testPlayer, scoreboard[0]);
         }
@@ -48,7 +48,7 @@
 			scoreboardMock.AddPlayer(testPlayer4);
 			scoreboardMock.AddPlayer(testPlayer5);
 
-            var scoreboard = scoreboardMock.SortByHighestScore();
+            var scoreboard = scoreboardMock.ToString();
 
 			Assert.AreEqual(testPlayer5, scoreboard[0]);
 			Assert.AreEqual(testPlayer3, scoreboard[1]);

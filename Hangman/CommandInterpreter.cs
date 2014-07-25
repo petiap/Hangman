@@ -38,7 +38,7 @@
                 default:
                     if (command.Length == 1 && IsValidLetter(command[0]))
                     {
-                        char letter = command[0];
+                        char letter = char.Parse(command);
 
                         GameEngine.GuessLetter(getGame(), letter);
                     }

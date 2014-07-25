@@ -53,7 +53,7 @@
 
                 Scoreboard.ScoreboardInstance.AddPlayer(newTopPlayer);
 
-                GameEngine.ShowScoreboard();
+                ShowScoreboard();
             }
             else if (!isNewTopScore)
             {

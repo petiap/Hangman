@@ -42,7 +42,7 @@
             {
 				if (value < 0)
 				{
-					throw new ArgumentNullException("Score", "Value can't be negative");
+					throw new ArgumentOutOfRangeException("Score", "Value can't be negative");
 				}
 
 				this.score = value;

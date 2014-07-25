@@ -7,7 +7,7 @@
 
     public class Scoreboard
     {
-        private const int NUMBER_OF_TOP_PLAYERS = 5;
+        private const int NumberOfTopPlayers = 5;
 
         private static Scoreboard scoreboardInstance;
 
@@ -38,7 +38,7 @@
 
         public bool IsNewTopScore(double topScoreCandidate)
         {
-            if (this.topPlayers.Count < NUMBER_OF_TOP_PLAYERS)
+			if (this.topPlayers.Count < NumberOfTopPlayers)
             {
                 return true;
             }
@@ -47,7 +47,7 @@
 
                 SortByHighestScore();
 
-                int lastPosition = (NUMBER_OF_TOP_PLAYERS - 1);
+				int lastPosition = (NumberOfTopPlayers - 1);
                 double lowestTopScore = this.topPlayers[lastPosition].Score;
 
                 if (lowestTopScore < topScoreCandidate)
@@ -70,9 +70,9 @@
             }
             else
             {
-                if (count >= NUMBER_OF_TOP_PLAYERS)
+				if (count >= NumberOfTopPlayers)
                 {
-                    count = NUMBER_OF_TOP_PLAYERS;
+					count = NumberOfTopPlayers;
                 }
 
                 SortByHighestScore();
