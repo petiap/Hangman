@@ -1,4 +1,6 @@
-﻿namespace Hangman
+﻿using System.Text;
+
+namespace Hangman
 {
     using System;
 
@@ -48,5 +50,14 @@
 				this.score = value;
             }
         }
+
+	    public override string ToString()
+	    {
+			StringBuilder str = new StringBuilder();
+
+		    str.Append(this.Name + " --> " + this.Score);
+
+		    return str.ToString();
+	    }
     }
 }

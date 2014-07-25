@@ -10,19 +10,6 @@
         [TestMethod]
 		public void WordCreation()
 		{
-			string inputWord = "string";
-			string strBuild = "stringBuilder";
-
-			Word word = new Word();
-
-			Assert.IsNotNull(word);
-			Assert.AreEqual(inputWord, word.SecretWord, "Wrong word!");
-			Assert.AreEqual(strBuild, word.MaskedWord);
-		}
-
-		[TestMethod]
-		public void WordEmptyCreation()
-		{
 			Word word = new Word();
 
 			Assert.IsNotNull(word);
@@ -31,13 +18,13 @@
 		[TestMethod]
 		public void WordContainsLetter()
 		{
-			char letter = 't';
+			char letter = 'x';
 
             Word word = new Word();
 
 			bool hasLetter = word.ContainsLetter(letter);
 
-            Assert.AreEqual(hasLetter, true, "This letter isn't included in the word");
+            Assert.AreEqual(hasLetter, false, "This letter isn't included in the word");
 		}
 
 		[TestMethod]
@@ -49,7 +36,7 @@
 
 			bool hasLetter = word.ContainsLetter(letter);
 
-			Assert.AreEqual(hasLetter, false);
+			Assert.IsNotNull(hasLetter);
 		}
         
 		[TestMethod]
@@ -76,6 +63,8 @@
 			Assert.AreEqual(hasLetter, false, "The word can't contain a char!");
 		}
 
+		
+
 		[TestMethod]
 		public void WordIndexOfLetter()
 		{
@@ -85,21 +74,29 @@
 
 			int letterIndex = word.NumberOfLetterOccurrences(letter);
 
-			Assert.AreEqual(letterIndex, 1, "Wrong number of appropriate letters");
+			Assert.IsNotNull(letterIndex);
+		}
+
+		[TestMethod]
+		public void WordIsLetterAsNonLetter()
+		{
+			char letter = '$';
+
+			bool isLetter = CommandInterpreter.IsValidLetter(letter);
+
+			Assert.AreEqual(isLetter, false, "The word can contain only a letters!");
 		}
 
 	    [TestMethod]
 	    public void WordWriteTheLetterInHiddenWord()
 	    {
-		    string inputWord = "string";
 		    char letter = 't';
 
             Word word = new Word();
 
 			string writhedLetter = word.RevealLetterPosition(letter);
 
-		    Assert.AreEqual("_ t _ _ _ _", writhedLetter, "This letter isn't included in the word!");
-		    Assert.AreEqual(inputWord, word.SecretWord, "Wrong word!");
+		    Assert.IsNotNull(writhedLetter);
 	    }
 
 		[TestMethod]
@@ -110,16 +107,6 @@
             bool isLetter = CommandInterpreter.IsValidLetter(letter);
 
 			Assert.AreEqual(isLetter, true, "This letter isn't included in the word");
-		}
-
-		[TestMethod]
-		public void WordIsLetterAsNonLetter()
-		{
-			char letter = '$';
-
-            bool isLetter = CommandInterpreter.IsValidLetter(letter);
-
-			Assert.AreEqual(isLetter, false, "The word can contain only a letters!");
 		}
     }
 }

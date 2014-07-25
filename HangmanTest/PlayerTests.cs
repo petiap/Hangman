@@ -56,6 +56,7 @@
             testPlayer = new Player(testPlayerName, testPlayerScore);
         }
 
+		[TestMethod]
         public void TopPlayerCreation()
         {
             string name = "New player";
@@ -94,26 +95,6 @@
         {
             string name = "New player";
             int topScore = -1;
-
-            Player topPlayer = new Player(name, topScore);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TopPlayerNameAsNumber()
-        {
-            string name = "4526.34561";
-            int topScore = 5;
-
-            Player topPlayer = new Player(name, topScore);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TopPlayerScoreIsMoreThanAllLettersInAlphabeth()
-        {
-            string name = "New player";
-            int topScore = 30;
 
             Player topPlayer = new Player(name, topScore);
         }

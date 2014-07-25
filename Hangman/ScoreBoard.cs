@@ -82,7 +82,7 @@
                     int position = i + 1;
                     string comment = this.topPlayers[i].Score == 1 ? "mistake" : "mistakes";
 
-                    scoreboard.AppendLine(position + ". " + this.topPlayers[i].Name + " --> " + this.topPlayers[i].Score + " " + comment);
+                    scoreboard.AppendLine(position + ". " + this.topPlayers[i].ToString() + " " + comment);
                 }
             }
 
