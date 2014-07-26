@@ -18,7 +18,7 @@
             "variable"
         };
 
-        private readonly static Random randomWordGenerator;
+        private static readonly Random randomWordGenerator;
 
         static RandomWordGenerator()
         {
