@@ -13,10 +13,11 @@ TODO:
         Note: The combination of Singleton and Lazy-Initialization patterns
               is a pattern known as Initialization-on-Demand Holder Idiom
               (http://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom),
-              which effectively results in a thread-safe lazy singleton initialization              
-    - implement 2 Structural patterns
+              which effectively results in a thread-safe lazy singleton initialization
+    - implement 2 Structural patterns - 50% DONE (working)
+        - implemented Module pattern
     - implement 2 Behavioral patterns - DONE
         - implemented State pattern
         - implemented Mediator pattern
   4. Documentation
-    - detailed step-by-step description of th erefactoring process
+    - detailed step-by-step description of the refactoring process - 50% DONE
