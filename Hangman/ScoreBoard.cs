@@ -36,7 +36,7 @@
             this.topPlayers.Add(newPlayer);
         }
 
-        public bool IsNewTopScore(double topScoreCandidate)
+        public bool IsNewTopScore(int topScoreCandidate)
         {
 			if (this.topPlayers.Count < NumberOfTopPlayers)
             {
