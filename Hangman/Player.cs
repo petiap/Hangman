@@ -53,11 +53,11 @@ namespace Hangman
 
 	    public override string ToString()
 	    {
-			StringBuilder str = new StringBuilder();
+			StringBuilder playerInfo = new StringBuilder();
 
-		    str.Append(this.Name + " --> " + this.Score);
+		    playerInfo.Append(this.Name + " --> " + this.Score);
 
-		    return str.ToString();
+		    return playerInfo.ToString();
 	    }
     }
 }
