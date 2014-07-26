@@ -1,28 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Context">
+    <Position X="1.177" Y="0.5" Height="0.323" Width="0.7" />
+  </Comment>
+  <Comment CommentText="State">
+    <Position X="4.417" Y="0.5" Height="0.292" Width="0.7" />
+  </Comment>
+  <Comment CommentText="Concrete State 1">
+    <Position X="2.938" Y="4.635" Height="0.291" Width="1.137" />
+  </Comment>
+  <Comment CommentText="Concrete State 2">
+    <Position X="5.219" Y="4.156" Height="0.291" Width="1.137" />
+  </Comment>
   <Class Name="Hangman.Game">
-    <Position X="0.75" Y="0.5" Width="1.5" />
+    <Position X="0.75" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAABAAAAAAAAABAAAAAAAAAAABAEAAAABAAAAAI=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.GameState">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="4" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.InitialState">
-    <Position X="2.75" Y="2.25" Width="1.5" />
+    <Position X="2.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>InitialState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.PlayState">
-    <Position X="5" Y="2.25" Width="1.5" />
+    <Position X="5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PlayState.cs</FileName>

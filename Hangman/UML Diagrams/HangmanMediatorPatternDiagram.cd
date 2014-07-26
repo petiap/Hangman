@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Mediator">
+    <Position X="7.948" Y="0.812" Height="0.291" Width="0.7" />
+  </Comment>
+  <Comment CommentText="Concrete Mediator">
+    <Position X="7.948" Y="2.312" Height="0.291" Width="1.262" />
+  </Comment>
+  <Comment CommentText="Colleague">
+    <Position X="4.885" Y="3.688" Height="0.291" Width="0.773" />
+  </Comment>
   <Class Name="Hangman.CommandInterpreter">
     <Position X="6.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>

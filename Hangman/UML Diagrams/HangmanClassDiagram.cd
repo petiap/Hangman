@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Hangman.CommandInterpreter">
-    <Position X="10" Y="2.25" Width="1.5" />
+    <Position X="9" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAIAAAQAAAAAg=</HashCode>
       <FileName>CommandInterpreter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.Decoder">
-    <Position X="10" Y="0.75" Width="1.5" />
+    <Position X="9" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>Decoder.cs</FileName>
@@ -22,14 +22,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.GameEngine">
-    <Position X="12.25" Y="1" Width="1.5" />
+    <Position X="11.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAABAAAAAIAAQAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameEngine.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.GameState">
-    <Position X="7.25" Y="0.5" Width="1.5" />
+    <Position X="6.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameState.cs</FileName>
@@ -43,49 +43,49 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.InitialState">
-    <Position X="6" Y="2.25" Width="1.5" />
+    <Position X="5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>InitialState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.Player">
-    <Position X="1.5" Y="5.25" Width="1.5" />
+    <Position X="13" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAgEAAAIAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.PlayState">
-    <Position X="8.25" Y="2.25" Width="1.5" />
+    <Position X="7.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PlayState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.RandomWordGenerator">
-    <Position X="6" Y="6" Width="1.5" />
+    <Position X="5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAgAAAgAAA=</HashCode>
       <FileName>RandomWordGenerator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.Scoreboard">
-    <Position X="12.25" Y="3.5" Width="1.5" />
+    <Position X="11.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAEQAAAQAAUAAAAAAQAgAAAAAAAA=</HashCode>
       <FileName>Scoreboard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.Word">
-    <Position X="4.25" Y="4.75" Width="1.5" />
+    <Position X="3.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAAAAQAAQBAAAACAAAAAgAAAADAAAAAAAA=</HashCode>
       <FileName>Word.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Delegate Name="Hangman.GetGameDelegate" Collapsed="true">
-    <Position X="4.25" Y="2.25" Width="1.5" />
+    <Position X="3.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CommandInterpreter.cs</FileName>
