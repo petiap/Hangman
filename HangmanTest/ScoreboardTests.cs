@@ -85,7 +85,7 @@
 
 			var check = scoreboardMock.IsNewTopScore(testPlayer5.Score);
 
-			Assert.AreEqual(check, true);
+			Assert.AreEqual(check, false);
 		}
 
 		[TestMethod]
@@ -106,7 +106,7 @@
 
 			var check = scoreboardMock.IsNewTopScore(testPlayer2.Score);
 
-			Assert.AreEqual(check, false);
+			Assert.AreEqual(check, true);
 		}
     }
 }
