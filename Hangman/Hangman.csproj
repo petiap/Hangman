@@ -59,6 +59,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="UML Diagrams\HangmanSingletonAndModulePatternDiagram.cd" />
+    <None Include="UML Diagrams\HangmanMediatorPatternDiagram.cd" />
+    <None Include="UML Diagrams\HangmanStatePatternDiagram.cd" />
+    <None Include="UML Diagrams\HangmanClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

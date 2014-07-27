@@ -4,7 +4,7 @@
 
     public static class GameEngine
     {
-        private static bool notUseHelp = true;
+        private static bool usedHelp = false;
         
         public static void GuessLetter(Game currentGame, char letter)
         {
@@ -33,7 +33,7 @@
 
             secretWord.RevealLetterPosition(hintLetter);
 
-            notUseHelp = false;
+            usedHelp = true;
         }
 
         public static void EstimateScore(Word secretWord, int numberOfMistakes)
@@ -44,7 +44,7 @@
             Console.WriteLine("The secret word is " + secretWord.MaskedWord);
             Console.Write("\nYou won with " + numberOfMistakes + comment);
 
-            if (notUseHelp && isNewTopScore)
+            if (!usedHelp && isNewTopScore)
             {
                 Console.Write("\nPlease enter your name for the top scoreboard: ");
 
@@ -64,7 +64,7 @@
                 Console.Write(" but you have cheated. You are not allowed to enter into the scoreboard.\n");
             }
 
-            notUseHelp = true;
+            usedHelp = false;
         }
 
         public static void ShowScoreboard()
