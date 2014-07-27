@@ -4,20 +4,21 @@ TODO:
     - debugging - DONE
     - implement missing functionality - DONE
     - test for compliance with the specification - DONE
-  2. Write Unit Tests
-    - add unit tests for the existing classes - DONE
-  3. Implement Data Patterns
-    - implement 2 Creational patterns - DONE
+  2. Implement Data Patterns
+    - implement 2 Creational design patterns - DONE
         - implemented Singleton pattern
         - implemented Lazy-Initialization pattern
         Note: The combination of Singleton and Lazy-Initialization patterns
               is a pattern known as Initialization-on-Demand Holder Idiom
               (http://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom),
               which effectively results in a thread-safe lazy singleton initialization
-    - implement 2 Structural patterns - 50% DONE (working)
-        - implemented Module pattern
-    - implement 2 Behavioral patterns - DONE
-        - implemented State pattern
-        - implemented Mediator pattern
+    - implement 2 Structural design patterns - DONE
+        - implemented Module pattern (http://en.wikipedia.org/wiki/Module_pattern)
+        - implemented Facade pattern (http://en.wikipedia.org/wiki/Facade_pattern)
+    - implement 2 Behavioral design patterns - DONE
+        - implemented State pattern (http://en.wikipedia.org/wiki/State_pattern)
+        - implemented Mediator pattern (http://en.wikipedia.org/wiki/Mediator_pattern)
+  3. Write Unit Tests
+    - add unit tests for the existing classes - DONE
   4. Documentation
-    - detailed step-by-step description of the refactoring process - 50% DONE
+    - detailed step-by-step description of the refactoring process - DONE
