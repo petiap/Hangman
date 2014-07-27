@@ -50,7 +50,7 @@
 				int lastPosition = (NumberOfTopPlayers - 1);
                 double lowestTopScore = this.topPlayers[lastPosition].Score;
 
-                if (lowestTopScore < topScoreCandidate)
+                if (lowestTopScore > topScoreCandidate)
                 {
                     return true;
                 }
